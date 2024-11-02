@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "449021592469",
+    "project_id": "teste-omie-db",
+    "storage_bucket": "teste-omie-db.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449021592469:android:2ed0379c5d79cfc3212c9c",
+        "android_client_info": {
+          "package_name": "br.com.testeomie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOI9l3KRyXLo8zu6L34S0dD5ovxTjFC3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
