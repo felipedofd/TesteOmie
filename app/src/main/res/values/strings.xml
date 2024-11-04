@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Teste Omie</string>
+    <string name="empty_selling_list_text">Não há vendas cadastradas.</string>
 </resources>
