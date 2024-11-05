@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import br.com.testeomie.presentation.components.TextFieldComponent
-import br.com.testeomie.repository.SalesRepository
+import br.com.testeomie.model.SalesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
