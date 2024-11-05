@@ -22,4 +22,8 @@ class SalesRepository {
     fun loadSales(): Flow<MutableList<Sales>> {
         return dataSource.loadSalesOnDb()
     }
+
+    fun deleteSales(sales: String) {
+        dataSource.deleteSalesDb(sales)
+    }
 }
