@@ -48,4 +48,12 @@ class DataSource {
         return allSales
     }
 
+    fun deleteSalesDb(sales: String) {
+        db.collection("sales").document(sales).delete().addOnCompleteListener {
+            Log.d("FRA", "delete success on firestore")
+        }.addOnFailureListener {
+            Log.d("FRA", "delete error on firestore")
+        }
+    }
+
 }
