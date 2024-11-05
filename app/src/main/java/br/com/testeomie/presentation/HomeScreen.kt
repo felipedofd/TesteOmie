@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import br.com.testeomie.R
 import br.com.testeomie.presentation.components.SellButtonComponent
 import br.com.testeomie.presentation.components.itemSalesList.SalesListItem
-import br.com.testeomie.repository.SalesRepository
+import br.com.testeomie.model.SalesRepository
 import br.com.testeomie.ui.theme.TesteOmieTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
