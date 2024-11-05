@@ -83,7 +83,7 @@ fun HomeScreen() {
                 val salesList = salesRepository.loadSales().collectAsState(mutableListOf()).value
                 LazyColumn {
                     itemsIndexed(salesList) { position, _ ->
-                        SalesListItem(position, salesList)
+                        SalesListItem(position, salesList, context)
                     }
                 }
             }
