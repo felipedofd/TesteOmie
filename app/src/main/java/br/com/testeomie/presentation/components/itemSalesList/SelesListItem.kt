@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.testeomie.model.Sales
 import br.com.testeomie.presentation.components.DeleteButtonComponent
-import br.com.testeomie.repository.SalesRepository
+import br.com.testeomie.model.SalesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
