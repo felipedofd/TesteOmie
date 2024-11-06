@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -47,18 +48,18 @@ fun HomeScreen(
         Scaffold(modifier = Modifier.fillMaxSize(), floatingActionButton = {
             SellButtonComponent(onClick = {
                 onAddClientClick()
-            }, Modifier)
+            })
         }, topBar = {
             TopAppBar(title = {}, colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = colorResource(id = R.color.omie_color)
             ), navigationIcon = {
                 IconButton(onClick = {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.omie.com.br"))
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(context.getString(R.string.omie_url_text)))
                     context.startActivity(intent)
                 }, modifier = Modifier.fillMaxSize()) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_omie_text),
-                        contentDescription = "",
+                        contentDescription = stringResource(R.string.omie_button_content_description),
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
@@ -91,17 +92,11 @@ fun HomeScreen(
                 } else {
                     Text(
                         modifier = Modifier.align(Alignment.Center),
-                        text = stringResource(R.string.empty_selling_list_text)
+                        text = stringResource(R.string.empty_selling_list_text),
+                        color = Color.DarkGray
                     )
                 }
             }
         }
     }
-}
-
-
-@Preview
-@Composable
-fun HomeScreenPreview() {
-//    HomeScreen()
 }
