@@ -1,5 +1,33 @@
 <resources>
     <string name="app_name">Teste Omie</string>
     <string name="empty_selling_list_text">Não há vendas cadastradas.</string>
-    <string name="empty_product_list_text">Não há produtos cadastradas.</string>
+    <string name="empty_product_list_text">Não há produtos cadastrados.</string>
+    <string name="order_number_text">Ordem nº </string>
+    <string name="unitary_product_value_text">Valor Unitário: %s</string>
+    <string name="product_description_text">Descrição: %s</string>
+    <string name="product_quantity_text">Quantidade: %s</string>
+    <string name="total_value_text">Valor Total: %1$.2f</string>
+    <string name="product_description_label">Descrição do Produto</string>
+    <string name="quantity_label">Quantidade</string>
+    <string name="unit_value_label">Valor Unitário</string>
+    <string name="cancel_button_text">Cancelar</string>
+    <string name="invalid_field_toast_text">Campos inválidos</string>
+    <string name="confir_button_text">Confirmar</string>
+    <string name="omie_url_text">https://www.omie.com.br</string>
+    <string name="omie_button_content_description">link para homepage Omie</string>
+    <string name="order_number_auto_increment_text">Ordem n° #%1$d</string>
+    <string name="sales_form_text">Formulário de Venda</string>
+    <string name="client_name_label">Nome do Cliente</string>
+    <string name="add_product_button_text">Incluir Produtos</string>
+    <string name="save_sales_button_text">Salvar Venda</string>
+    <string name="total_sales_value_text">Total de vendas: R$ %1$.2f</string>
+    <string name="new_sale_button_content_description">Iniciar Nova Venda</string>
+    <string name="exclude_button_content_description">Exclude Button</string>
+    <string name="item_uuid">UUID: %1$s</string>
+    <string name="client_name_text">Cliente: %1$s</string>
+    <string name="products_text">Produtos:</string>
+    <string name="alert_dialog_negative_button_text">Não</string>
+    <string name="alert_dialog_button_positive_text">Sim</string>
+    <string name="exclude_sales_confirmation_text">Deseja excluir a venda?</string>
+    <string name="delete_sales_text">Deletar venda</string>
 </resources>
