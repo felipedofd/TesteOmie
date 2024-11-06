@@ -13,8 +13,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import br.com.testeomie.R
 import br.com.testeomie.model.Product
 
 @Composable
@@ -39,30 +41,25 @@ fun ProductListItem(
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Descrição: ${productDescription.toString()}",
+                text = stringResource(R.string.product_description_text, productDescription.toString()),
                 style = MaterialTheme.typography.bodyMedium
             )
             Spacer(modifier = Modifier.height(2.dp))
             Text(
-                text = "Quantidade: $productQuantity",
+                text = stringResource(R.string.product_quantity_text, productQuantity) ,
                 style = MaterialTheme.typography.bodyMedium
             )
             Spacer(modifier = Modifier.height(2.dp))
             Text(
-                text = "Valor Unitário: $unitaryProductValue",
+                text = stringResource(R.string.unitary_product_value_text, unitaryProductValue),
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Spacer(modifier = Modifier.height(2.dp))
+            val totalValue = unitaryProductValue * productQuantity
+            Text(
+                text = stringResource(R.string.total_value_text, totalValue),
                 style = MaterialTheme.typography.bodyMedium
             )
         }
     }
-}
-
-@Composable
-@Preview
-private fun ProductListItemPreview() {
-//    SalesListItem(
-//        Product(
-//            "Bolo", "um", "200",
-//        )
-//    )
-
 }
