@@ -11,12 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import br.com.testeomie.R
 
 @Composable
-fun SellButtonComponent(onClick: () -> Unit, modifier: Modifier) {
+fun SellButtonComponent(onClick: () -> Unit) {
     FloatingActionButton(
         onClick = onClick,
         containerColor = colorResource(R.color.omie_color),
@@ -26,14 +26,8 @@ fun SellButtonComponent(onClick: () -> Unit, modifier: Modifier) {
     ) {
         Icon(
             imageVector = Icons.Filled.Add,
-            contentDescription = "Iniciar Nova Venda",
-            tint = Color.White // Cor do ícone
+            contentDescription = stringResource(R.string.new_sale_button_content_description),
+            tint = Color.White
         )
     }
-}
-
-@Preview
-@Composable
-fun SellButtonComponentPreview() {
-    SellButtonComponent(onClick = {}, Modifier)
 }
