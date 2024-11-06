@@ -1,59 +1,48 @@
 package br.com.testeomie.data
 
-import android.util.Log
-import br.com.testeomie.model.Sales
+import br.com.testeomie.model.Product
+import br.com.testeomie.model.Sale
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.tasks.await
+import java.util.UUID
 
 
 class DataSource {
+
     private val db = FirebaseFirestore.getInstance()
-    private val _allSales = MutableStateFlow<MutableList<Sales>>(mutableListOf())
-    private val allSales: StateFlow<MutableList<Sales>> = _allSales
 
-
-    fun saveSalesOnDb(
-        clientName: String,
-        productDescription: String,
-        productQuantity: String,
-        unitaryProductValue: String
-    ) {
-        val salesMap = hashMapOf(
-            "name" to clientName,
-            "description" to productDescription,
-            "quantity" to productQuantity,
-            "value" to unitaryProductValue
-        )
-
-        db.collection("sales").document(clientName).set(salesMap).addOnCompleteListener {
-            Log.d("FRA", "save success on firestore")
-        }.addOnFailureListener {
-            Log.d("FRA", "save error on firestore")
-        }
-    }
-
-    fun loadSalesOnDb(): Flow<MutableList<Sales>> {
-        val salesList: MutableList<Sales> = mutableListOf()
-        db.collection("sales").get().addOnCompleteListener { querySnapShot ->
-            if (querySnapShot.isSuccessful) {
-                for (document in querySnapShot.result) {
-                    val sales = document.toObject(Sales::class.java)
-                    salesList.add(sales)
-                    _allSales.value = salesList
-                }
+    suspend fun loadSalesOnDb(): MutableList<Sale> {
+        val productList: MutableList<Sale> = mutableListOf()
+        val querySnapShot = db.collection("sales").get().await()
+        for (document in querySnapShot.documents) {
+            val product = document.toObject(Sale::class.java)
+            if (product != null) {
+                productList.add(product)
             }
         }
-        return allSales
+        return productList
     }
 
-    fun deleteSalesDb(sales: String) {
-        db.collection("sales").document(sales).delete().addOnCompleteListener {
-            Log.d("FRA", "delete success on firestore")
-        }.addOnFailureListener {
-            Log.d("FRA", "delete error on firestore")
-        }
+    suspend fun deleteSalesDb(name: String) {
+        db.collection("sales").document(name).delete().await()
     }
 
+    suspend fun saveClientWithProducts(
+        clientName: String,
+        productList: List<Product>
+    ) {
+        val uuid = UUID.randomUUID().toString()
+        val salesMap = hashMapOf(
+            "uuid" to uuid,
+            "name" to clientName,
+            "products" to productList
+        )
+
+        db.collection("sales").document(uuid).set(salesMap).await()
+    }
+
+    suspend fun getOrderCount(): Int {
+        val querySnapShot = db.collection("sales").get().await()
+        return querySnapShot.size()
+    }
 }
