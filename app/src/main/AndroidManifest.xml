@@ -23,7 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ClientActivity" />
+        <activity android:name=".ClientActivity"
+            android:theme="@style/Theme.TesteOmie"
+            android:exported="true"/>
     </application>
 
 </manifest>
