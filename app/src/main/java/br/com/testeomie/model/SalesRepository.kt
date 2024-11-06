@@ -1,28 +1,22 @@
 package br.com.testeomie.model
 
 import br.com.testeomie.data.DataSource
-import kotlinx.coroutines.flow.Flow
 
-class SalesRepository {
+class SalesRepository(private val dataSource: DataSource = DataSource()) {
 
-    private val dataSource = DataSource()
-
-    fun saveSales(
-        clientName: String,
-        productDescription: String,
-        productQuantity: String,
-        unitaryProductValue: String
-    ) {
-        dataSource.saveSalesOnDb(
-            clientName, productDescription, productQuantity, unitaryProductValue
-        )
-    }
-
-    fun loadSales(): Flow<MutableList<Sales>> {
+    suspend fun loadSales(): MutableList<Sale> {
         return dataSource.loadSalesOnDb()
     }
 
-    fun deleteSales(sales: String) {
-        dataSource.deleteSalesDb(sales)
+    suspend fun deleteSalesByUUID(name: String) {
+        dataSource.deleteSalesDb(name)
+    }
+
+    suspend fun saveClientWithProducts(clientName: String, productList: List<Product>) {
+        dataSource.saveClientWithProducts(clientName, productList)
+    }
+
+    suspend fun getOrderCount(): Int {
+        return dataSource.getOrderCount()
     }
 }
